@@ -1,2 +1,2 @@
 # ericrowan.com
-My portfolio, or lack thereof. 
+What was once my portfolio, and may be again, but probably not. 
