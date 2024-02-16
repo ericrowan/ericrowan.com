@@ -1,7 +1,20 @@
-function displayCurrentDateAndTime() {
+function displayAnimatedEllipsis() {
+    const dots = document.getElementById("loading");
+    if (!dots) {
+      return; // Early exit if element doesn't exist
+    }
+  
+    let currentDot = 0;
+    setInterval(() => {
+      dots.textContent = ".".repeat(currentDot);
+      currentDot = (currentDot + 1) % 4;
+    }, 500);
+  }
+  
+  function displayCurrentDateAndTime() {
     const timestampContainer = document.getElementById("timestamp-container");
     if (!timestampContainer) {
-      return;
+      return; // Early exit if element doesn't exist
     }
   
     const date = new Date();
@@ -30,6 +43,10 @@ function displayCurrentDateAndTime() {
     }
   }
   
-  // Call the function once after the DOM is ready
-  window.addEventListener("DOMContentLoaded", displayCurrentDateAndTime);
+  // Call functions after the DOM is ready
+  window.addEventListener("DOMContentLoaded", () => {
+    displayAnimatedEllipsis();
+    displayCurrentDateAndTime();
+    setInterval(displayCurrentDateAndTime, 1000); // Update time every second
+  });
   
