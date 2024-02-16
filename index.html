@@ -8,12 +8,39 @@
     <p>BRB<span id="loading">...</span></p>
   </body>
   <script>
-    const dots = document.getElementById("loading");
-    let currentDot = 0;
+    function animatedEllipsis () {
+      const dots = document.getElementById("loading");
+      let currentDot = 0;
+      
+      setInterval(() => {
+        dots.textContent = ".".repeat(currentDot);
+        currentDot = (currentDot + 1) % 4;
+      }, 500);
+    }
+
+    animatedEllipsis();
+  
+    function displayCurrentDateAndTime() {
+      const date = new Date();
+      const options = {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric',
+        hour: 'numeric',
+        minute: 'numeric',
+        second: 'numeric',
+        timeZone: 'America/Los_Angeles', // Choose your desired time zone
+        hour12: true,
+      };
     
-    setInterval(() => {
-      dots.textContent = ".".repeat(currentDot);
-      currentDot = (currentDot + 1) % 4;
-    }, 500);
+      const formattedDate = date.toLocaleDateString('en-US', options);
+      const formattedTime = date.toLocaleTimeString('en-US', options);
+    
+      const combined = `${formattedDate} ${formattedTime}`;
+    
+      // console.log(combined); // Use your preferred display method, like alert, innerHTML, etc.
+    }
+
+    displayCurrentDateAndTime();
   </script>
 </html>
