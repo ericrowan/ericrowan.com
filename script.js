@@ -36,13 +36,7 @@ window.addEventListener("DOMContentLoaded", () => {
       const formattedDate = date.toLocaleDateString("en-US", options);
       const formattedTime = date.toLocaleTimeString("en-US", options);
       const combined = `${formattedDate} ${formattedTime}`;
-  
-      const timestampSpan = timestampContainer.querySelector("span");
-      if (timestampSpan) {
-        timestampSpan.textContent = combined;
-      } else {
-        console.log("Unable to render.")
-    }
+        combined;
     }
   
     // Call functions after the DOM is ready
