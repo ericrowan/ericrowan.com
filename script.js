@@ -22,11 +22,6 @@ window.addEventListener("DOMContentLoaded", () => {
       const date = new Date();
   
       const timestampContainer = document.getElementById("timestamp-container");
-      if (!timestampContainer) {
-        console.error("Element with ID 'timestamp-container' not found. Cannot display timestamp.");
-        return; // Exit function if element not found
-      }
-  
       const options = {
         year: "numeric",
         month: "long",
@@ -46,10 +41,8 @@ window.addEventListener("DOMContentLoaded", () => {
       if (timestampSpan) {
         timestampSpan.textContent = combined;
       } else {
-        const newSpan = document.createElement("span");
-        newSpan.textContent = combined;
-        timestampContainer.appendChild(newSpan);
-      }
+        console.log("Unable to render.")
+    }
     }
   
     // Call functions after the DOM is ready
