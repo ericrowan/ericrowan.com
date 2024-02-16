@@ -2,56 +2,57 @@
 <html lang="en-US">
   <head>
     <meta charset="utf-8" />
-    <title>👋</title>
+    <title></title>
   </head>
   <body>
     <p>BRB<span id="loading">...</span></p>
     <p>
       <span id="timestamp"></span>
     </p>
-  </body>
 
+    <script>
+      // Animated ellipsis (no changes needed here)
+      function displayAnimatedEllipsis() {
+        const dots = document.getElementById("loading");
+        let currentDot = 0;
 
-  <script>
-    // Animated ellipsis
-    function displayAnimatedEllipsis () {
-      const dots = document.getElementById("loading");
-      let currentDot = 0;
-      
-      setInterval(() => {
-        dots.textContent = ".".repeat(currentDot);
-        currentDot = (currentDot + 1) % 4;
-      }, 500);
-    }
-
-    displayAnimatedEllipsis();
-
-    // Current date & time
-    function displayCurrentDateAndTime() {
-      const date = new Date();
-    
-      if (Intl.DateTimeFormat().resolvedOptions().timeZone) {
-        const userTimeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
-        const options = {
-          year: 'numeric',
-          month: 'long',
-          day: 'numeric',
-          hour: 'numeric',
-          minute: 'numeric',
-          second: 'numeric',
-          timeZone: userTimeZone,
-          hour12: true,
-        };
-        const formattedDate = date.toLocaleDateString('en-US', options);
-        const formattedTime = date.toLocaleTimeString('en-US', options);
-        const combined = `${formattedDate} ${formattedTime}`;
-        // console.log(combined);
-        document.getElementById("timestamp");
-      } else {
-        console.log("User's time zone unavailable. Consider alternative methods.");
+        setInterval(() => {
+          dots.textContent = ".".repeat(currentDot);
+          currentDot = (currentDot + 1) % 4;
+        }, 500);
       }
-    }
-    
-    displayCurrentDateAndTime();
-  </script>
+
+      displayAnimatedEllipsis();
+
+      // Current date & time (fix: add dateTime.textContent = combined;)
+      function displayCurrentDateAndTime() {
+        const date = new Date();
+        const dateTime = document.getElementById("timestamp");
+
+        if (Intl.DateTimeFormat().resolvedOptions().timeZone) {
+          const userTimeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+          const options = {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric',
+            hour: 'numeric',
+            minute: 'numeric',
+            second: 'numeric',
+            timeZone: userTimeZone,
+            hour12: true,
+          };
+          const formattedDate = date.toLocaleDateString('en-US', options);
+          const formattedTime = date.toLocaleTimeString('en-US', options);
+          const combined = `${formattedDate} ${formattedTime}`;
+
+          // Update the timestamp element's content
+          dateTime.textContent = combined; //  This line was missing
+        } else {
+          console.log("User's time zone unavailable. Consider alternative methods.");
+        }
+      }
+
+      displayCurrentDateAndTime();
+    </script>
+  </body>
 </html>
