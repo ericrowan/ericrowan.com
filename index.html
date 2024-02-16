@@ -5,6 +5,15 @@
     <title>👋</title>
   </head>
   <body>
-    <p>BRB...maybe.</p>
+    <p>BRB<span id="loading">...</span></p>
   </body>
+  <script>
+    const dots = document.getElementById("loading");
+    let currentDot = 0;
+    
+    setInterval(() => {
+      dots.textContent = ".".repeat(currentDot);
+      currentDot = (currentDot + 1) % 4;
+    }, 300); // Adjust interval for desired speed
+  </script>
 </html>
