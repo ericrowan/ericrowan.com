@@ -1,60 +1,12 @@
 <!doctype html>
 <html lang="en-US">
 <head>
-    <meta charset="utf-8" />
-    <title id="loading">...</title>
+  <meta charset="utf-8" />
+  <title id=""loading>•••</title>
+  <script src="script.js"></script> 
 </head>
 <body>
-    <p>BRB<span id="loading">...</span></p>
-    <p id="timestamp-container"></p>
-
-    <script>
-        // Animated ellipsis (no changes needed here)
-        function displayAnimatedEllipsis() {
-            const dots = document.getElementById("loading");
-            let currentDot = 0;
-
-            setInterval(() => {
-                dots.textContent = ".".repeat(currentDot);
-                currentDot = (currentDot + 1) % 4;
-            }, 500);
-        }
-
-        displayAnimatedEllipsis();
-
-        // Current date & time (create and update separate element)
-        function displayCurrentDateAndTime() {
-            const date = new Date();
-            const timestampContainer = document.getElementById("timestamp-container");
-
-            if (Intl.DateTimeFormat().resolvedOptions().timeZone) {
-                const userTimeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
-                const options = {
-                    year: 'numeric',
-                    month: 'long',
-                    day: 'numeric',
-                    hour: 'numeric',
-                    minute: 'numeric',
-                    second: 'numeric',
-                    timeZone: userTimeZone,
-                    hour12: true,
-                };
-                const formattedDate = date.toLocaleDateString('en-US', options);
-                const formattedTime = date.toLocaleTimeString('en-US', options);
-                const combined = `${formattedDate} ${formattedTime}`;
-
-                // Create a new span element for the timestamp
-                const timestampSpan = document.createElement("span");
-                timestampSpan.textContent = combined;
-
-                // Add the timestamp span to the container element
-                timestampContainer.appendChild(timestampSpan);
-            } else {
-                console.log("User's time zone unavailable. Consider alternative methods.");
-            }
-        }
-
-        displayCurrentDateAndTime();
-    </script>
+  <p>BRB<span id="loading">...</span></p>
+  <p id="timestamp-container"></p>
 </body>
 </html>
