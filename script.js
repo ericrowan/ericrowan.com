@@ -1,10 +1,7 @@
 function displayAnimatedEllipsis() {
     const dots = document.getElementById("loading");
-    if (!dots) {
-      return; // Early exit if element doesn't exist
-    }
-  
     let currentDot = 0;
+  
     setInterval(() => {
       dots.textContent = ".".repeat(currentDot);
       currentDot = (currentDot + 1) % 4;
@@ -12,12 +9,10 @@ function displayAnimatedEllipsis() {
   }
   
   function displayCurrentDateAndTime() {
-    const timestampContainer = document.getElementById("timestamp-container");
-    if (!timestampContainer) {
-      return; // Early exit if element doesn't exist
-    }
-  
     const date = new Date();
+    const timestampContainer = document.getElementById("timestamp-container");
+    const timestampSpan = timestampContainer.querySelector("span");
+  
     const options = {
       year: "numeric",
       month: "long",
@@ -33,7 +28,6 @@ function displayAnimatedEllipsis() {
     const formattedTime = date.toLocaleTimeString("en-US", options);
     const combined = `${formattedDate} ${formattedTime}`;
   
-    const timestampSpan = timestampContainer.querySelector("span");
     if (timestampSpan) {
       timestampSpan.textContent = combined;
     } else {
@@ -43,10 +37,7 @@ function displayAnimatedEllipsis() {
     }
   }
   
-  // Call functions after the DOM is ready
-  window.addEventListener("DOMContentLoaded", () => {
-    displayAnimatedEllipsis();
-    displayCurrentDateAndTime();
-    setInterval(displayCurrentDateAndTime, 1000); // Update time every second
-  });
+  // Call functions once
+  displayAnimatedEllipsis();
+  displayCurrentDateAndTime();
   
