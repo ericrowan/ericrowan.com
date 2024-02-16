@@ -5,10 +5,15 @@
     <title>👋</title>
   </head>
   <body>
-    <p>BRB<span id="loading">...</span></p>
+    <p>BRB
+      <span id="loading">...</span>
+    </p>
+    <p>
+      <span id="timestamp">...</span>
+    </p>
   </body>
   <script>
-    function animatedEllipsis () {
+    function displayAnimatedEllipsis () {
       const dots = document.getElementById("loading");
       let currentDot = 0;
       
@@ -18,10 +23,11 @@
       }, 500);
     }
 
-    animatedEllipsis();
+    displayAnimatedEllipsis();
 
     function displayCurrentDateAndTime() {
       const date = new Date();
+      const dateTime = document.getElementById("timestamp");
     
       if (Intl.DateTimeFormat().resolvedOptions().timeZone) {
         const userTimeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
