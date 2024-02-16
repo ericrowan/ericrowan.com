@@ -42,11 +42,10 @@
             hour12: true,
           };
           const formattedDate = date.toLocaleDateString('en-US', options);
-          const formattedTime = date.toLocaleTimeString('en-US', options);
           const combined = `${formattedDate} ${formattedTime}`;
 
           // Update the timestamp element's content
-          dateTime.textContent = combined; //  This line was missing
+          dateTime.textContent = combined;
         } else {
           console.log("User's time zone unavailable. Consider alternative methods.");
         }
