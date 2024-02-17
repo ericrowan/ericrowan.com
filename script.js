@@ -19,10 +19,6 @@ window.addEventListener("DOMContentLoaded", () => {
     function displayCurrentDateAndTime() {
       const date = new Date();
       const timestampContainer = document.getElementById("timestamp-container");
-      if (!timestampContainer) {
-        console.error("Element with ID 'timestamp-container' not found. Cannot display timestamp.");
-        return;
-      }
   
       const options = {
         year: "numeric",
