@@ -1,7 +1,7 @@
 window.addEventListener("DOMContentLoaded", () => {
     // Function to animate ellipsis dots
     function displayAnimatedEllipsis() {
-      const dots = document.getElementsByClassName("loading");
+      const dots = document.getElementById("loading");
 
       let currentDot = 0;
       dots.textContent = "."; // Start with one dot
