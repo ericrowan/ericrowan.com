@@ -15,33 +15,28 @@ window.addEventListener("DOMContentLoaded", () => {
       }, 500);
     }
   
-    // Function to display current date and time
-    function displayCurrentDateTime() {
-        const timestampContainer = document.getElementById("timestamp-container");
-        if (!timestampContainer) {
-          console.error("Element with ID 'timestamp-container' not found. Cannot display timestamp.");
-          return;
-        }
-    
-        const updateTimestamp = () => {
-          const date = new Date();
-          const options = {
-            year: "numeric",
-            month: "long",
-            day: "numeric",
-            hour: "numeric",
-            minute: "numeric",
-            second: "numeric",
-            timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone,
-            hour12: true,
-          };
-    
-          const combined = date.toLocaleString("en-US", options);
-          timestampContainer.textContent = combined;
-        };
-    
-        updateTimestamp(); // Initial display
-        setInterval(updateTimestamp, 1000); // Update every second
+    // Function to display current date and time (once)
+    function displayCurrentDateAndTime() {
+      const date = new Date();
+      const timestampContainer = document.getElementById("timestamp-container");
+      if (!timestampContainer) {
+        console.error("Element with ID 'timestamp-container' not found. Cannot display timestamp.");
+        return;
+      }
+  
+      const options = {
+        year: "numeric",
+        month: "long",
+        day: "numeric",
+        hour: "numeric",
+        minute: "numeric",
+        second: "numeric",
+        timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+        hour12: true,
+      };
+  
+      const combined = date.toLocaleString("en-US", options);
+      timestampContainer.textContent = combined; // Directly set the text content
     }
   
     displayAnimatedEllipsis();
