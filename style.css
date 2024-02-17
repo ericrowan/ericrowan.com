@@ -1,8 +1,7 @@
 body {
     margin: 0;
     font-family: sans-serif;
-    font-size: 13vw;
-    padding: 1vw;
+    padding: 3vw;
 }
 
 .container {
@@ -10,5 +9,6 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    font-size: 13vw;
     opacity: 0.1;
 }
