@@ -1,30 +1,31 @@
-// Ensure DOM is ready before running any code
 window.addEventListener("DOMContentLoaded", () => {
-
     // Function to animate ellipsis dots
     function displayAnimatedEllipsis() {
       const dots = document.getElementById("loading");
       if (!dots) {
         console.error("Element with ID 'loading' not found. Cannot display animated ellipsis.");
-        return; // Exit function if element not found
+        return;
       }
   
       let currentDot = 0;
+      dots.textContent = "."; // Start with one dot
   
-      setInterval(() => {
-        dots.textContent = ".".repeat(currentDot);
+      const intervalId = setInterval(() => {
+        dots.textContent += "."; // Add dots until reaching three
+        if (currentDot === 3) {
+          dots.textContent = ""; // Reset to start the animation again
+        }
         currentDot = (currentDot + 1) % 4;
       }, 500);
     }
   
-    // Function to display current date and time
+    // Function to display current date and time (once)
     function displayCurrentDateAndTime() {
       const date = new Date();
-  
       const timestampContainer = document.getElementById("timestamp-container");
       if (!timestampContainer) {
         console.error("Element with ID 'timestamp-container' not found. Cannot display timestamp.");
-        return; // Exit function if element not found
+        return;
       }
   
       const options = {
@@ -38,21 +39,10 @@ window.addEventListener("DOMContentLoaded", () => {
         hour12: true,
       };
   
-      const formattedDate = date.toLocaleDateString("en-US", options);
-      const formattedTime = date.toLocaleTimeString("en-US", options);
-      const combined = `${formattedDate} ${formattedTime}`;
-  
-      const timestampSpan = timestampContainer.querySelector("span");
-      if (timestampSpan) {
-        timestampSpan.textContent = combined;
-      } else {
-        const newSpan = document.createElement("span");
-        newSpan.textContent = combined;
-        timestampContainer.appendChild(newSpan);
-      }
+      const combined = date.toLocaleString("en-US", options);
+      timestampContainer.textContent = combined; // Directly set the text content
     }
   
-    // Call functions after the DOM is ready
     displayAnimatedEllipsis();
     displayCurrentDateAndTime();
   });
